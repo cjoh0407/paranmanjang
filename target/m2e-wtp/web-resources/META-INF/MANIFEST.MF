@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Built-By: KOSA_L3
+Build-Jdk: 11.0.31
+Created-By: Maven Integration for Eclipse
+
