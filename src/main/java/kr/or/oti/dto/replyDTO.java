@@ -1,5 +1,5 @@
 package kr.or.oti.dto;
 
-public class ocj {
-
+public class replyDTO {
+	
 }

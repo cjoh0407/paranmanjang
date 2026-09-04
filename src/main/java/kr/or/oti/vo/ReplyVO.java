@@ -1,5 +1,6 @@
 package kr.or.oti.vo;
 
-public class ocj {
+public class ReplyVO {
 
+	
 }
