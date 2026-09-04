@@ -8,13 +8,17 @@
 	<name>paranmanjang</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.3.19</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<org.springframework-security-version>5.8.16</org.springframework-security-version>
 	</properties>
+
 	<dependencies>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -28,20 +32,54 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework-security-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework-security-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springframework-security-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+			<version>${org.springframework-security-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>${org.springframework-security-version}</version>
+		</dependency>
+
+
+		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.46</version>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+		<!-- MariaDB -->
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
@@ -49,7 +87,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<!-- HikariCP -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
@@ -57,7 +95,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<!-- Spring JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -65,6 +103,7 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Spring TX -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -72,7 +111,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<!-- MyBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -80,30 +119,28 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Source: https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<!-- MyBatis Spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.7</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		<!-- Source: https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+
+		<!-- ModelMapper -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>3.0.0</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
 
-		<!-- Source: https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<!-- Hibernate Validator -->
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.2.5.Final</version>
-		    <scope>compile</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.5.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -119,18 +156,21 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${org.slf4j-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -166,16 +206,18 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -198,8 +240,10 @@
 		</dependency>
 
 	</dependencies>
+
 	<build>
 		<plugins>
+
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
@@ -214,6 +258,7 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -226,6 +271,7 @@
 					<showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -234,6 +280,7 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>
