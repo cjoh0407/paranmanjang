@@ -23,6 +23,13 @@
 	
 	<context:component-scan base-package="kr.or.oti" />
 	
+<!-- 	<beans:bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<beans:property name="formatters">
+			<beans:bean class="kr.or.oti.controller.formatter.LocalDateFormatter"/>
+		</beans:property>
+	</beans:bean> -->
+	
+	<annotation-driven conversion-service="conversionService"/>
 	
 	
 </beans:beans>
