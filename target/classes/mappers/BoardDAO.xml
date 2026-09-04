@@ -3,7 +3,67 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.or.oti.mapper.boardDAO">
+<mapper namespace="kr.or.oti.mapper.BoardDAO">
 
-   
+	<select id="searchWithAll"
+        parameterType="kr.or.oti.dto.PageRequestDTO"
+        resultType="kr.or.oti.dto.BoardListAllDTO">
+
+    SELECT
+        b.bno,
+        b.title,
+        b.writer,
+        b.regDate,
+
+        (
+            SELECT COUNT(*)
+            FROM reply r
+            WHERE r.board_bno = b.bno
+        ) AS replyCount
+
+    FROM board b
+
+    <where>
+
+        <if test="keyword != null and keyword != ''
+                  and types != null">
+
+            <trim prefix="(" suffix=")" prefixOverrides="OR">
+
+                <foreach collection="types" item="type">
+
+                    <if test="type == 't'">
+                        OR b.title LIKE CONCAT('%', #{keyword}, '%')
+                    </if>
+
+                    <if test="type == 'c'">
+                        OR b.content LIKE CONCAT('%', #{keyword}, '%')
+                    </if>
+
+                    <if test="type == 'w'">
+                        OR b.writer LIKE CONCAT('%', #{keyword}, '%')
+                    </if>
+
+                </foreach>
+
+            </trim>
+
+        </if>
+
+    </where>
+
+    ORDER BY b.bno DESC
+
+    LIMIT #{skip}, #{size}
+
+</select>
+
+	<select id="getCount"
+		parameterType="kr.or.oti.dto.PageRequestDTO" resultType="int">
+
+		SELECT COUNT(*)
+		FROM board
+
+	</select>
+
 </mapper>

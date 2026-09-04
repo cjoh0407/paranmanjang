@@ -1,40 +1,40 @@
 package kr.or.oti.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @Builder
-@ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class BoardDTO {
-	private Long tid;
-	
+	private Long bno;
+
 	@NotEmpty
+	@Size(min = 3, max = 100)
 	private String title;
-	
-	private boolean delFlag;
-	
-	@Future
-	private LocalDate dueDate;
-	private boolean finished;
-	
+
+	@NotEmpty
+	private String content;
+
 	@NotEmpty
 	private String writer;
-	
-	private LocalDate createDate;
-	
-	public String getFinishedStr() {
-		return finished ? "done" : "not yet";
-	}
-	
+
+	private LocalDateTime regDate;
+	private LocalDateTime modDate;
+
+	// 첨부파일 이름
+	private List<String> fileNames;
+
+	// 화면 출력용 S3 URL
+	private List<String> imageUrls;
+
 }

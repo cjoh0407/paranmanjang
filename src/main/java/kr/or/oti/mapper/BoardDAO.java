@@ -1,5 +1,12 @@
 package kr.or.oti.mapper;
-//package kr.or.oti.mapper;
-//
-//public interface boardDAO {
-//}
+
+import java.util.List;
+
+import kr.or.oti.dto.BoardListAllDTO;
+import kr.or.oti.dto.PageRequestDTO;
+
+public interface BoardDAO {
+	List<BoardListAllDTO> searchWithAll(PageRequestDTO pageRequestDTO);
+
+	int getCount(PageRequestDTO pageRequestDTO);
+}
